@@ -48,7 +48,7 @@ export default function DisplayFood(props: Props) {
     for (let i = 0; foundIndex != -1 && startPos < words.length; i++) {
       output.push(
         <Fragment key={i}>
-          {words.substring(startPos, foundIndex-1)}
+          {words.substring(startPos, foundIndex)}
           <mark>{words.substring(foundIndex, foundIndex + searchLength)}</mark>
         </Fragment>
       );
