@@ -56,7 +56,7 @@ export default function DisplayFood(props: Props) {
       foundIndex = wordsToLowerCase.indexOf(substringToLowerCase, startPos);
       i++;
     }
-    output.push(<Fragment key={i}>{words.substring(startPos)}</Fragment>);
+    output.push(<Fragment key={words.length}>{words.substring(startPos)}</Fragment>);
 
     return <div>{output}</div>;
   }
