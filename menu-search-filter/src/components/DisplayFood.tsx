@@ -41,7 +41,6 @@ export default function DisplayFood(props: Props) {
     let output: any = [];
     let startPos = 0;
     let foundIndex = 0;
-    let i = 0;
 
     if (substring == "") return <div>{words}</div>;
     foundIndex = wordsToLowerCase.indexOf(substringToLowerCase, startPos);
