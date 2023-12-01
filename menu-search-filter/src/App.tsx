@@ -12,7 +12,7 @@ function App() {
     let filteredMenu: Food[] = [];
     if (text != "") {
       filteredMenu = foods.filter((food) => {
-        return food.name.match(new RegExp(text, "i"));
+        return food.name.toLowerCase().match(text.toLowerCase());
       });
     }
     return filteredMenu;
