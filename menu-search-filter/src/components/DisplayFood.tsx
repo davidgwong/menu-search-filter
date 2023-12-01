@@ -34,10 +34,37 @@ export default function DisplayFood(props: Props) {
     return <div>{splittedWords}</div>;
   }
 
+  function highlightSubstringNoRegEx(words: string, substring: string) {
+    let wordsToLowerCase = words.toLowerCase();
+    let substringToLowerCase = substring.toLowerCase();
+    let searchLength = substring.length;
+    let output: any = [];
+    let startPos = 0;
+    let foundIndex = 0;
+    let i = 0;
+
+    if (substring == "") return <div>{words}</div>;
+    foundIndex = wordsToLowerCase.indexOf(substringToLowerCase, startPos);
+    for (let i = 0; foundIndex != -1 && startPos < words.length; i++) {
+      output.push(
+        <Fragment key={i}>
+          {words.substring(startPos, foundIndex-1)}
+          <mark>{words.substring(foundIndex, foundIndex + searchLength)}</mark>
+        </Fragment>
+      );
+      startPos = foundIndex + searchLength;
+      foundIndex = wordsToLowerCase.indexOf(substringToLowerCase, startPos);
+      i++;
+    }
+    output.push(<Fragment key={i}>{words.substring(startPos)}</Fragment>);
+
+    return <div>{output}</div>;
+  }
+
   return (
     <div style={mystyle}>
-      <h2>{highlightSubstring(props.name, props.searchSubstring)}</h2>
-      {highlightSubstring(props.description, props.searchSubstring)}
+      <h2>{highlightSubstringNoRegEx(props.name, props.searchSubstring)}</h2>
+      {highlightSubstringNoRegEx(props.description, props.searchSubstring)}
     </div>
   );
 }
